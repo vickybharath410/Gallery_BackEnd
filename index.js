@@ -40,7 +40,7 @@ app.get('/one',async(req,res)=>{
 app.post('/add',async(req,res)=>{
     try {
         const newPost=await Post.create({
-            label:req.body.label,
+            label:req.body.label.toLowerCase(),
             url:req.body.url
         })
         res.status(201).json({
