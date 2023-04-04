@@ -12,7 +12,7 @@ app.use(bodyParser.json());
 app.use(cors());
 app.get("/", async(req, res) => {
   try {
-    const allPost=await Post.find();
+    const allPost=await Post.find().sort({_id:-1});
     res.status(200).json({
         status:"Success",
         data:allPost
