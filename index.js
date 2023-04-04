@@ -24,6 +24,19 @@ app.get("/", async(req, res) => {
     })
   }
 });
+app.get('/one',async(req,res)=>{
+    try {
+        const singlePost=await Post.find({
+            label:req.body.label
+        })
+        res.send(singlePost)
+    } catch (error) {
+        res.status(400).json({
+            status:"Failed",
+            message:error.message
+        })
+    }
+})
 app.post('/add',async(req,res)=>{
     try {
         const newPost=await Post.create({
